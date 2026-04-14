@@ -7,7 +7,7 @@ logging.basicConfig(level = logging.INFO)
 # Принцип єдиної відповідальності
 
 class Book():
-    def __init__(self, title: str, author: str, year: int) -> None:
+    def __init__(self, title: str, author: str, year: str) -> None:
         self.title = title
         self.author = author
         self.year = year
@@ -50,7 +50,7 @@ class LibraryManager:
     def __init__(self, library: LibraryInterface) -> None:
         self.library = library
 
-    def add_book(self, title: str, author: str, year: int) -> None:
+    def add_book(self, title: str, author: str, year: str) -> None:
         book = Book(title, author, year)
         self.library.add_book(book)
 
@@ -85,7 +85,7 @@ def main():
             case "exit":
                 break
             case _:
-                print("Invalid command. Please try again.")
+                logging.info("Invalid command. Please try again.")
 
 if __name__ == "__main__":
     main()

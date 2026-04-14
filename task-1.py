@@ -19,11 +19,11 @@ class Vehicle(ABC):
 
 class Car(Vehicle):
     def start_engine(self) -> None:
-        print(f"{self.make} {self.model} ({self.region}): Двигун запущено")
+        logging.info(f"{self.make} {self.model} ({self.region}): Двигун запущено")
 
 class Motorcycle(Vehicle):
     def start_engine(self):
-        print(f"{self.make} {self.model} ({self.region}): Мотор заведено")
+        logging.info(f"{self.make} {self.model} ({self.region}): Мотор заведено")
 
 # Створення абстрактної фабрики
 
@@ -33,7 +33,7 @@ class VehicleFactory(ABC):
         pass
     
     @abstractmethod
-    def create_motorcycle(self, make: str, model: str) -> None:
+    def create_motorcycle(self, make: str, model: str) -> Vehicle:
         pass
     
 # Реалізація двох класів фабрик 
@@ -58,7 +58,7 @@ def main() -> None:
     us_factory: VehicleFactory = USVehicleFactory()
     eu_factory: VehicleFactory = EUVehicleFactory()
 
-    car = us_factory.create_car("Harley-Davidson", "Sportster")
+    car = us_factory.create_car("Ford", "Mustang")
     bike = eu_factory.create_motorcycle("BMW", "R1250")
 
     car.start_engine()
