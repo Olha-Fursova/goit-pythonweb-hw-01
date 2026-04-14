@@ -22,7 +22,7 @@ class Car(Vehicle):
         logging.info(f"{self.make} {self.model} ({self.region}): Двигун запущено")
 
 class Motorcycle(Vehicle):
-    def start_engine(self):
+    def start_engine(self) -> None:
         logging.info(f"{self.make} {self.model} ({self.region}): Мотор заведено")
 
 # Створення абстрактної фабрики
